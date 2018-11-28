@@ -15,7 +15,6 @@ function arenaTier(input) {
         for (const tech of gladiators.get(gladiator1).keys()) {
           if (gladiators.get(gladiator2).has(tech)) {
             hasSameTechnique = true;
-            technique = tech;
           }
         }
 
@@ -56,7 +55,7 @@ function arenaTier(input) {
 
   function getTotalSkill(gladiator) {
     let sum = 0;
-    gladiators.get(gladiator).forEach((skill, technique) => sum += skill)
+    gladiators.get(gladiator).forEach(skill => sum += skill);
     return sum;
   }
 }

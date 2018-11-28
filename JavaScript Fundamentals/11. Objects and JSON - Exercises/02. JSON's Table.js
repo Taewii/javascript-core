@@ -3,7 +3,7 @@ function parseToHTMLTable(json) {
   let html = '<table>\n';
 
   for (const person of input) {
-    html += ' <tr>\n'
+    html += ' <tr>\n';
     for (const data of Object.values(person)) {
       html += `  <td>${htmlEscape(data)}</td>\n`
     }

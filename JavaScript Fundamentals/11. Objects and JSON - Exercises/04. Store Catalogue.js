@@ -11,17 +11,16 @@ function catalogue(input) {
     }
     catalogue.get(letter).push(prod);
   });
-
-
+  
   catalogue = new Map([...catalogue.entries()].sort((a, b) => a[0].localeCompare(b[0])));
 
   catalogue.forEach((items, letter) => {
     console.log(letter);
     
     items.sort((a, b) => a.product.localeCompare(b.product))
-    .forEach(item => {
-      console.log(`  ${item.product}: ${item.price}`);
-    })
+      .forEach(item => {
+        console.log(`  ${item.product}: ${item.price}`);
+      })
   });
 }
 

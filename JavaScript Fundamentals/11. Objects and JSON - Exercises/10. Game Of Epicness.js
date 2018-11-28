@@ -87,7 +87,8 @@ function war(kingdomsData, warsData) {
   }
 }
 
-war([{
+war([
+  {
     kingdom: "Maiden Way",
     general: "Merek",
     army: 5000
@@ -125,7 +126,8 @@ war([{
   ["Maiden Way", "Berinon", "Stonegate", "Ulric"]
 ]);
 
-war([{
+war([
+  {
     kingdom: "Stonegate",
     general: "Ulric",
     army: 5000
@@ -145,7 +147,8 @@ war([{
   ["Maiden Way", "Berinon", "YorkenShire", "Quinn"]
 ]);
 
-war([{
+war([
+  {
     kingdom: "Maiden Way",
     general: "Merek",
     army: 5000
@@ -173,4 +176,4 @@ war([{
 ], [
   ["YorkenShire", "Quinn", "Stonegate", "Doran"],
   ["Stonegate", "Ulric", "Maiden Way", "Merek"]
-])
+]);

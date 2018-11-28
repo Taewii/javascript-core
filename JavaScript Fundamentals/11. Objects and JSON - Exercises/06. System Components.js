@@ -29,7 +29,7 @@ function systemComponents(input) {
 
     console.log(systemName);
     components.forEach((subComponents, componentName) => {
-      console.log(`|||${componentName}`)
+      console.log(`|||${componentName}`);
       subComponents.forEach(sc => console.log(`||||||${sc}`))
     });
   });

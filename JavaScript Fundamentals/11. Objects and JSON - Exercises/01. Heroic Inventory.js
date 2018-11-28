@@ -9,7 +9,7 @@ function heroicInventory(input) {
       name: heroName,
       level: +heroLevel,
       items: heroItems,
-    }
+    };
 
     heroes.push(hero);
   }

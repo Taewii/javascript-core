@@ -1,8 +1,8 @@
 function orderUsernames(usernames) {
   return usernames
-  .filter((value, i, arr) => arr.indexOf(value) === i)
-  .sort((a, b) => a.length - b.length || a.localeCompare(b))
-  .join('\r\n');
+    .filter((value, i, arr) => arr.indexOf(value) === i)
+    .sort((a, b) => a.length - b.length || a.localeCompare(b))
+    .join('\r\n');
 }
 
 console.log(orderUsernames([
