@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Search in List</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+  <ul id="towns">
+    <li>Sofia</li>
+    <li>Pleven</li>
+    <li>Varna</li>
+    <li>Plovdiv</li>
+  </ul>
+  <input type="text" id="searchText" />
+  <button onclick="search()">Search</button>
+  <div id="result"></div>
+
+  <script>
+    function search() {
+      const $text = $("#searchText").val();
+
+      const $elements = $('#towns li')
+        .css('font-weight', '')
+        .filter((index, element) => element.textContent.indexOf($text) > -1)
+        .css('font-weight', 'bold');
+
+      $('#result').text(`${$elements.length} matches found.`);
+    }
+  </script>
+</body>
+
+</html>
