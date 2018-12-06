@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Time Converter</title>
+  <style>
+    label, input {
+      display: inline-block;
+      width: 5em;
+    }
+    label {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body onload="attachEventsListeners()">
+  <h1>Time Converter</h1>
+  <div>
+    <label for="days">Days: </label>
+    <input type="text" id="days">
+    <input id="daysBtn" type="button" value="Convert">
+  </div>
+  <div>
+    <label for="hours">Hours: </label>
+    <input type="text" id="hours">
+    <input id="hoursBtn" type="button" value="Convert">
+  </div>
+  <div>
+    <label for="minutes">Minutes: </label>
+    <input type="text" id="minutes">
+    <input id="minutesBtn" type="button" value="Convert">
+  </div>
+  <div>
+    <label for="seconds">Seconds: </label>
+    <input type="text" id="seconds">
+    <input id="secondsBtn" type="button" value="Convert">
+  </div>
+
+  <script>
+    function attachEventsListeners() {
+      const days = document.getElementById('days');
+      const hours = document.getElementById('hours');
+      const minutes = document.getElementById('minutes');
+      const seconds = document.getElementById('seconds');
+
+      document.getElementById('daysBtn').addEventListener('click', (e) => {
+        const num = +e.target.parentNode.children[1].value;
+        hours.value = num * 24;
+        minutes.value = hours.value * 60;
+        seconds.value = minutes.value * 60;
+      });
+
+      document.getElementById('hoursBtn').addEventListener('click', (e) => {
+        const num = +e.target.parentNode.children[1].value;
+        days.value = num / 24;
+        minutes.value = num * 60;
+        seconds.value = minutes.value * 60;
+      });
+
+      document.getElementById('minutesBtn').addEventListener('click', (e) => {
+        const num = +e.target.parentNode.children[1].value;
+        seconds.value = num * 60;
+        hours.value = num / 60;
+        days.value = hours.value / 24
+      });
+
+      document.getElementById('secondsBtn').addEventListener('click', (e) => {
+        const num = +e.target.parentNode.children[1].value;
+        minutes.value = num / 60;
+        hours.value = minutes.value / 60;
+        days.value = hours.value / 24;
+      });
+
+
+      // second solution
+      // document.getElementById('daysBtn').addEventListener('click', () => convert(daysField.value * 86400));
+      // document.getElementById('hoursBtn').addEventListener('click', () => convert(hoursField.value * 3600));
+      // document.getElementById('minutesBtn').addEventListener('click', () => convert(minutesField.value * 60));
+      // document.getElementById('secondsBtn').addEventListener('click', () => convert(secondsField.value));
+
+      // function convert(seconds) {
+      //   secondsField.value = seconds;
+      //   minutesField.value = seconds / 60;
+      //   hoursField.value = seconds / 3600;
+      //   daysField.value = seconds / 86400;
+      // }
+    }
+  </script>
+</body>
+
+</html>
