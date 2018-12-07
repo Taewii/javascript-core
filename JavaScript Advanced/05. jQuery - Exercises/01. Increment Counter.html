@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Increment Counter</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+</div>
+<script>
+  window.onload = function () {
+    increment("#wrapper");
+
+    function increment(selector) {
+      const $root = $(selector);
+      const $textArea = $('<textarea class="counter" disabled>0</textarea>');
+      const $incrementButton = $('<button class="btn" id="incrementBtn">Increment</button>');
+      const $addButton = $('<button class="btn" id="addBtn">Add</button>');
+      const $list = $('<ul class="results"></ul>');
+
+      const fragment = document.createDocumentFragment();
+      $(fragment).append($textArea).append($incrementButton).append($addButton).append($list);
+      $root.append(fragment);
+
+      $incrementButton.on('click', () => $textArea.val(+$textArea.val() + 1));
+      $addButton.on('click', () => $list.append(`<li>${$textArea.val()}</li>`))
+    }
+  }
+</script>
+</body>
+
+</html>
