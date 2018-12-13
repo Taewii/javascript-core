@@ -16,7 +16,34 @@
       return this.toString();
     }
 
-    //TODO
+    if (n < 4) {
+      return '.'.repeat(n);
+    }
+
+    if (!this.includes(' ')) {
+      return this.substring(0, n - 3) + '...';
+    }
+
+    let tokens = this.split(' ');
+    let result = tokens[0];
+
+    for (let i = 1; i < tokens.length; i++) {
+      if (result.length + tokens[i].length + 4 > n) {
+        return result + '...';
+      }
+      result += ' ' + tokens[i];
+    }
+  };
+
+  String.format = function () {
+    let args = [...arguments];
+    let str = args.shift();
+    for (let i = 0; i < str.length; i++) {
+      if (str.indexOf(`${i}`) !== -1 && args.length > 0) {
+        str = str.replace(`{${i}}`, args.shift());
+      }
+    }
+    return str;
   };
 })();
 
