@@ -13,6 +13,6 @@ function addDestination() {
     
     $seasonCounter.val(+$seasonCounter.val() + 1);
     $city.val('');
-    $country.val('')
+    $country.val('');
   }
 }

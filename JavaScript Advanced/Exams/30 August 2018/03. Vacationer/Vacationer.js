@@ -21,14 +21,14 @@ class Vacationer {
       if (!(/^[A-Z][a-z]+$/.test(name))) {
         throw new Error('Invalid full name');
       }
-      return name
+      return name;
     };
     
     this._fullName = {
       firstName: validate(nameInfo[0]),
       middleName: validate(nameInfo[1]),
       lastName: validate(nameInfo[2]),
-    }
+    };
   }
   
   addCreditCardInfo(info) {
@@ -44,7 +44,7 @@ class Vacationer {
       cardNumber: +info[0],
       expirationDate: info[1],
       securityNumber: +info[2],
-    }
+    };
   }
   
   generateIDNumber() {
