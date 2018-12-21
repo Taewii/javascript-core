@@ -88,3 +88,5 @@ class SoftUniFy {
     return output;
   }
 }
+
+module.exports = { SoftUniFy };
