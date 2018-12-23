@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Manager</title>
+    <style>
+        body {
+            padding: 30px
+        }
+
+        caption, table {
+            border: 1px solid #b1cbbb
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: auto
+        }
+
+        caption {
+            font-size: 20px;
+            font-weight: 700;
+            color: #DEEAEE;
+            background: #485788;
+            border-bottom: none;
+            padding: 5px
+        }
+
+        td, th {
+            padding: 5px 20px;
+            text-align: center
+        }
+
+        tfoot td, th {
+            background: #b1cbbb
+        }
+
+        tr:nth-child(odd) {
+            background: #EAF7FB
+        }
+
+        tr:nth-child(even) {
+            background: #C6D1D4
+        }
+
+        button {
+            margin: auto;
+            cursor: pointer
+        }
+
+        input[type=text] {
+            width: 100px
+        }
+
+        tbody > .more-info {
+            background: #E6F1B4 !important
+        }
+
+        tbody tr table {
+            margin: 5px auto 5px 20px;
+            width: 330px;
+        }
+
+        tbody tr table td {
+            background: #eea29a99 !important;
+            text-align: left;
+            width: 170px
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./solution.js"></script>
+</head>
+<body>
+
+<table>
+    <caption>{Town name}'s Public Transport</caption>
+    <thead>
+    <tr>
+        <th class="type">Type</th>
+        <th class="name">Name</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        <td><input name="type" type="text"></td>
+        <td><input name="name" type="text"></td>
+        <td>
+            <button class="search-btn">Search</button>
+            <button class="clear-btn">Clear</button>
+        </td>
+    </tr>
+    </thead>
+    <tbody class="vehicles-info"></tbody>
+</table>
+</body>
+</html>
