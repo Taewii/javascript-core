@@ -30,7 +30,7 @@ const pet = (() => {
   const dashboard = (ctx) => {
     petModel.getAll()
       .done((data) => {
-        ctx.pets = data.filter(animal => animal._acl.creator !== ctx.id);
+        ctx.pets = data.filter(animal => animal._acl.creator !== ctx.id && animal.name);
         ctx.loadPartials({
           header: '/templates/common/header.hbs',
           footer: '/templates/common/footer.hbs',
@@ -47,7 +47,7 @@ const pet = (() => {
     const category = ctx.params.category;
     petModel.getAllByCategory(category)
       .done((data) => {
-        ctx.pets = data.filter(animal => animal._acl.creator !== ctx.id);
+        ctx.pets = data.filter(animal => animal._acl.creator !== ctx.id && animal.name);
         ctx.loadPartials({
           header: '/templates/common/header.hbs',
           footer: '/templates/common/footer.hbs',
@@ -64,7 +64,7 @@ const pet = (() => {
     const userId = JSON.parse(sessionStorage.getItem('user_id'));
     petModel.mine(userId)
       .done((data) => {
-        ctx.pets = data;
+        ctx.pets = data.filter(animal => animal.name);
         ctx.loadPartials({
           header: '/templates/common/header.hbs',
           footer: '/templates/common/footer.hbs',
@@ -80,13 +80,12 @@ const pet = (() => {
   const edit = (ctx) => {
     const id = ctx.params.id;
     const description = ctx.params.description;
-
     petModel.get(id)
-      .done(pet => {
+      .done((pet) => {
         pet.description = description;
         petModel.edit(id, pet)
           .done(() => {
-            notification.info(`Successfully edited ${pet.name}`);
+            notification.info('Updated successfully!');
             ctx.redirect('#/dashboard');
           })
           .fail(notification.handleError);
@@ -96,11 +95,10 @@ const pet = (() => {
 
   const likePet = (ctx) => {
     const id = ctx.params.id;
-
     petModel.get(id)
-      .done(pet => {
+      .done((pet) => {
         pet.likes = +pet.likes + 1;
-        petModel.edit(id, pet) //TOSOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        petModel.edit(id, pet)
           .done(() => {
             notification.info(`Successfully liked ${pet.name}`);
             ctx.redirect('#/dashboard');
@@ -113,7 +111,7 @@ const pet = (() => {
   const details = (ctx) => {
     const id = ctx.params.id;
     petModel.get(id)
-      .done(pet => {
+      .done((pet) => {
         pet.isMine = pet._acl.creator === ctx.id;
         ctx.pet = pet;
         ctx.loadPartials({
@@ -128,10 +126,10 @@ const pet = (() => {
       .fail(notification.handleError);
   };
 
-  const deleteGet = (ctx) => {
+  const getDelete = (ctx) => {
     const id = ctx.params.id;
     petModel.get(id)
-      .done(pet => {
+      .done((pet) => {
         ctx.pet = pet;
         ctx.loadPartials({
           header: '/templates/common/header.hbs',
@@ -145,11 +143,11 @@ const pet = (() => {
       .fail(notification.handleError);
   };
 
-  const deletePost = (ctx) => {
+  const postDelete = (ctx) => {
     const id = ctx.params.id;
     petModel.remove(id)
       .done(() => {
-        notification.info('Pet successfully deleted.');
+        notification.info('Pet removed successfully!');
         ctx.redirect('#/dashboard');
       })
       .fail(notification.handleError);
@@ -164,7 +162,7 @@ const pet = (() => {
     likePet,
     details,
     edit,
-    deleteGet,
-    deletePost,
+    getDelete,
+    postDelete,
   };
 })();

@@ -30,7 +30,7 @@ const user = (() => {
       userModel.register({ username, password })
         .done((data) => {
           storage.saveUser(data);
-          notification.info('Successfully registered.');
+          notification.info('User registration successful.');
           ctx.redirect('#/');
         })
         .fail(notification.handleError);
@@ -56,7 +56,7 @@ const user = (() => {
       userModel.login(username, password)
         .done((data) => {
           storage.saveUser(data);
-          notification.info('Logged in.');
+          notification.info('Login successful.');
           ctx.redirect('#/');
         })
         .fail(notification.handleError);
@@ -67,7 +67,7 @@ const user = (() => {
     userModel.logout()
       .done(() => {
         storage.clearUser();
-        notification.info('Logged out.');
+        notification.info('Logout successful.');
         ctx.redirect('#/');
       })
       .fail(notification.handleError);

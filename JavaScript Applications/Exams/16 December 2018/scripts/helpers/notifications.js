@@ -3,7 +3,7 @@ const notification = (() => {
   const idInfoBox = 'infoBox';
   const idErrorBox = 'errorBox';
   const innerSelector = 'span';
-  const timeout = 2000;
+  const timeout = 3000;
 
   const $infoBox = $(`#${idInfoBox}`);
   const $errorBox = $(`#${idErrorBox}`);
@@ -22,6 +22,7 @@ const notification = (() => {
   $infoBox.on('click', () => $infoBox.fadeOut({
     complete: () => $infoText.text('')
   }));
+
   $errorBox.on('click', () => $errorBox.fadeOut({
     complete: () => $errorText.text('')
   }));
