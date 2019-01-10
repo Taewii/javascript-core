@@ -26,7 +26,7 @@ const petModel = (() => {
   };
 
   const remove = (id) => {
-    return requester.edit(`appdata/${appKey}/pets/${id}`);
+    return requester.remove(`appdata/${appKey}/pets/${id}`);
   };
 
   return {
